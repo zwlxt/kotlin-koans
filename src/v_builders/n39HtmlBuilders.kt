@@ -22,7 +22,7 @@ fun todoTask39(): Nothing = TODO(
 fun renderProductTable(): String {
     return html {
         table {
-            tr {
+            tr(color = getTitleColor()) {
                 td {
                     text("Product")
                 }
@@ -34,7 +34,19 @@ fun renderProductTable(): String {
                 }
             }
             val products = getProducts()
-            todoTask39()
+            for ((i,p) in products.withIndex()) {
+                tr {
+                    td(color = getCellColor(i, 0)) {
+                        text(p.description)
+                    }
+                    td(color = getCellColor(i, 1)) {
+                        text(p.price)
+                    }
+                    td(color = getCellColor(i, 2)) {
+                        text(p.popularity)
+                    }
+                }
+            }
         }
     }.toString()
 }
